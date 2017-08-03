@@ -38,11 +38,8 @@ testem.log
 /e2e/*.map
 
 # Generated files
-src/app/**/*.js
-src/app/**/*.js.map
-
-src/**/*.js
-src/**/*.js.map
+app/**/*.js
+app/**/*.js.map
 
 # System Files
 .DS_Store
