@@ -12,30 +12,15 @@ import {User} from "../model/user";
 
 export class LoginComponent implements OnInit {
   user: User = new User();
-  loading = false;
-  returnUrl: string;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private loginService: LoginService,
-              private alertService: AlertService) {
+  constructor(private loginService: LoginService) {
   }
 
   ngOnInit() {
     this.loginService.logout();
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login() {
-    this.loading = true;
-    this.loginService.login(this.user.username, this.user.password)
-      .subscribe(
-        () => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+    this.loginService.login(this.user.name, this.user.password);
   }
 }
