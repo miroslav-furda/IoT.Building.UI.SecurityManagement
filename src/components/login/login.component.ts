@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {LoginService} from "./login.service";
+import {LoginService} from "../../services/login.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {AlertService} from "./alert/alert.service";
+import {AlertService} from "../../services/alert.service";
 import {User} from "../model/user";
 
 @Component({

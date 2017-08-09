@@ -1,8 +1,8 @@
 import {RouterModule, Routes} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {LoginComponent} from "./login/login.component";
-import {HomeComponent} from "./home/home.component";
-import {LoginGuard} from "./login/login.guard";
+import {LoginComponent} from "../login/login.component";
+import {HomeComponent} from "../home/home.component";
+import {LoginGuard} from "../login/login.guard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [LoginGuard]},

@@ -1,7 +1,7 @@
 
 import {Component, OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Subscription";
-import {AlertService} from "./alert.service";
+import {AlertService} from "../../services/alert.service";
 
 @Component({
   moduleId: module.id,

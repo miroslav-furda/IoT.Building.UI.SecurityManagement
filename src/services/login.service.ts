@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import 'rxjs/add/operator/map'
-import {User} from "../model/user";
+import {User} from "../components/model/user";
 import "rxjs/add/observable/of";
-import {AlertService} from "./alert/alert.service";
+import {AlertService} from "./alert.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Headers} from '@angular/http';
 
@@ -18,7 +18,7 @@ export class LoginService {
   login(username: string, password: string) {
     this.loading = true;
     //todo change server after deployment
-    const URL: string = "http://localhost:8080/login/";
+    const URL: string = "http://192.168.99.100:8080/login/";
 
     let user: User = new User();
     user.name = username;
