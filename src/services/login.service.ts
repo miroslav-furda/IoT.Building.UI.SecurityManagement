@@ -6,19 +6,24 @@ import "rxjs/add/observable/of";
 import {AlertService} from "./alert.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Headers} from '@angular/http';
+import {Config} from "../config/config";
 
 @Injectable()
 export class LoginService {
   loading = false;
   returnUrl: string;
 
-  constructor(private http: Http, private route: ActivatedRoute, private router: Router, private alertService: AlertService) {
+  constructor(private http: Http, private route: ActivatedRoute, private router: Router,
+              private alertService: AlertService, private config: Config) {
   }
 
   login(username: string, password: string) {
     this.loading = true;
-    //todo change server after deployment
-    const URL: string = "http://192.168.99.100:8080/login/";
+
+    let server: string = this.config.get("url");
+    let port: number = this.config.get("port");
+
+    let url = "http://" + server + ":" + port + "/login/";
 
     let user: User = new User();
     user.name = username;
@@ -28,7 +33,8 @@ export class LoginService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(URL, currentUser, {headers: headers}).subscribe(() => {
+    this.http.post(url, currentUser, {headers: headers}).subscribe(
+      () => {
         this.alertService.success('Login successful', true);
         localStorage.setItem('currentUser', currentUser);
         this.router.navigate([this.returnUrl]);
