@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ng-frontend-container:
+    container_name: darwin-ui-access-managment
+    image: darwin-ui-access-managment
+    build: .
+    ports:
+     - "4200:4200"
+    volumes:
+     - .:/usr/src/app
